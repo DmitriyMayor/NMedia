@@ -24,7 +24,7 @@
         android:layout_height="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:srcCompat="@drawable/ic_more_vert_24" />
 
     <TextView
         android:id="@+id/tvAuthor"
@@ -53,6 +53,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/headerBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
@@ -67,14 +68,14 @@
         android:maxLines="10"
         android:text="Очень длинный текст вамывгмаывшгмывшгмывыкеваиывивеивыивеивкеиваиваие"
         android:textAlignment="textStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:autoLink="web"
-        android:gravity="top"
-        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="@id/headerBarrier"
         tools:ignore="RtlCompat" />
+
     <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/bottomBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
@@ -87,7 +88,8 @@
         android:paddingTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icons8_love_24"
+        app:srcCompat="@drawable/favorite_24px"
+        android:background="@color/white"
         android:layout_margin="8dp"/>
 
     <TextView
@@ -130,10 +132,11 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/viewsCounter"
         app:layout_constraintBottom_toBottomOf="@+id/shareCounter"
-        app:srcCompat="@drawable/icons8____48"
+        app:srcCompat="@drawable/visibility_24px"
         android:paddingTop="4dp"
-        tools:layout_editor_absoluteX="278dp" />
+         />
 
     <TextView
         android:id="@+id/viewsCounter"
