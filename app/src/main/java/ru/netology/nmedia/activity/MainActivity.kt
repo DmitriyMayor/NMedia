@@ -1,7 +1,7 @@
 package ru.netology.nmedia.activity
 
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.viewModels
 
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.R
@@ -20,48 +20,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel by viewModels<PostViewModel>()
+        viewModel.data.observe(this) { post ->
 
-
-
-        with(binding) {
-            tvAuthor.text = post.author
-            tvPublished.text = post.published
-            tvPostText.text = post.content
-            share.isActivated
-            shareCounter.text = getFormattedSharesNumber(post.shareCounter)
-            likesCounter.text = getFormattedLikesNumber(post.likesCounter)
-            viewsCounter.text = getFormattedViewsNumber(post.viewsCounter)
-
-            likes.setOnClickListener {
-                post.likeByMe = !post.likeByMe
-                Log.d("Dima", "likes clicked")
-
-                likes.setImageResource(
-                    if (post.likeByMe) {
-                        R.drawable.icons8__30
-                    } else {
-                        R.drawable.favorite_24px
-                    }
-                )
-                if (post.likeByMe) {
-                    post.likesCounter++
-                } else {
-                    post.likesCounter--
-                }
+            with(binding) {
+                tvAuthor.text = post.author
+                tvPublished.text = post.published
+                tvPostText.text = post.content
+                share.isActivated
+                shareCounter.text = getFormattedSharesNumber(post.shareCounter)
                 likesCounter.text = getFormattedLikesNumber(post.likesCounter)
-            }
-            share.setOnClickListener {
-                post.shareCounter++
-                shareCounter.text = getFormattedViewsNumber(post.viewsCounter)
-            }
-            root.setOnClickListener {
-                Log.d("Dima", "root clicked")
-            }
-            imageView2.setOnClickListener {
-                Log.d("Dima", "avatar clicked")
+                viewsCounter.text = getFormattedViewsNumber(post.viewsCounter)
+                if (post.likeByMe) {
+                    likes.setImageResource(R.drawable.icons8__30)
+                } else likes.setImageResource(R.drawable.favorite_24px)
+
             }
         }
-
+        binding.likes.setOnClickListener {
+            viewModel.like()
+        }
+        binding.share.setOnClickListener {
+            viewModel.share()
+        }
     }
 
     fun getFormattedLikesNumber(likes: Long): String {

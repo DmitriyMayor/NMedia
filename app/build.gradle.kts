@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.plugin.extraProperties
+
 
 plugins {
     alias(libs.plugins.androidApplication)
@@ -47,7 +47,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

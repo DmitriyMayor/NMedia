@@ -7,4 +7,6 @@ interface PostRepository {
 
     fun like()
     fun get(): LiveData<Post>
+
+    fun share()
 }
