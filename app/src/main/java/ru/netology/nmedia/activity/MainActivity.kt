@@ -1,14 +1,16 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.activity
 
 import android.os.Bundle
 import android.util.Log
 
 import androidx.appcompat.app.AppCompatActivity
+import ru.netology.nmedia.R
 
-import ru.netology.nmedia.data.Post
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.viewmodel.PostViewModel
 import kotlin.math.ln
 import kotlin.math.pow
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,16 +19,10 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var post = Post(
-            id = 1,
-            author = "Нетология, университет интернет-профессий будущего",
-            content = "Очень длинная строка бла бла бла",
-            published = "01.09.2024 14:00",
-            shareCounter = 999,
-            likesCounter = 999,
-            likeByMe = false,
-            viewsCounter = 1000
-        )
+        val viewModel by viewModels<PostViewModel>()
+
+
+
         with(binding) {
             tvAuthor.text = post.author
             tvPublished.text = post.published
