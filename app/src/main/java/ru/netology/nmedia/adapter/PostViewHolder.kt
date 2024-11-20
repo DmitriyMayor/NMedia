@@ -8,7 +8,7 @@ import ru.netology.nmedia.activity.getFormattedViewsNumber
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 
-class PostViewHolder(private val binding: CardPostBinding, private val callback: LikeCallback) :
+class PostViewHolder(private val binding: CardPostBinding, private val likeCallback: LikeCallback, private  val  shareCallback: ShareCallback) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(post: Post) = with(binding) {
@@ -24,10 +24,10 @@ class PostViewHolder(private val binding: CardPostBinding, private val callback:
         )
 
         likes.setOnClickListener {
-            callback(post)
+            likeCallback(post)
         }
         share.setOnClickListener {
-            callback(post)
+            shareCallback(post)
         }
     }
 }

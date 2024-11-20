@@ -3,13 +3,14 @@ package ru.netology.nmedia.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
+
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 
 typealias LikeCallback = (Post) -> Unit
+typealias ShareCallback = (Post) -> Unit
 
-class PostsAdapter(private val callback: LikeCallback) :
+class PostsAdapter(private val likeCallback: LikeCallback, private  val shareCallback:ShareCallback) :
     ListAdapter<Post, PostViewHolder>(PostDiffCallback) {
 
 
@@ -19,7 +20,7 @@ class PostsAdapter(private val callback: LikeCallback) :
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ), callback
+            ), likeCallback, shareCallback
         )
 
     }

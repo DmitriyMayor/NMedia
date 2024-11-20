@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 
 import androidx.appcompat.app.AppCompatActivity
-import ru.netology.nmedia.R
+
 import ru.netology.nmedia.adapter.PostsAdapter
 
 import ru.netology.nmedia.databinding.ActivityMainBinding
-import ru.netology.nmedia.databinding.CardPostBinding
+
 import ru.netology.nmedia.viewmodel.PostViewModel
 import kotlin.math.ln
 import kotlin.math.pow
@@ -22,8 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
-        val adapter = PostsAdapter {
-            viewModel.likeById(it.id)
+        val adapter = PostsAdapter ({
+            viewModel.likeById(it.id)}
+        ) {
             viewModel.shareById(it.id)
         }
         binding.container.adapter = adapter
