@@ -1,20 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    >
+    android:padding="16dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/card_post"/>
+        app:layout_constraintBottom_toTopOf="@id/barrier2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:listitem="@layout/card_post" />
 
 
-</FrameLayout>
+    <ImageView
+android:src="@drawable/ic_edit_picture"
+        android:id="@+id/edit_picture"
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/edit_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        app:layout_constraintLeft_toRightOf="@id/edit_picture"
+        app:layout_constraintBottom_toTopOf="@id/edit_field"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        app:layout_constraintRight_toLeftOf="@id/cancel"
+        android:text="Редактировать"
+        />
+    <TextView
+        android:id="@+id/edit_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintLeft_toRightOf="@id/edit_picture"
+        app:layout_constraintRight_toLeftOf="@id/cancel"
+        android:text="расрасрас"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/edit_header"
+        />
+
+
+    <ImageButton
+        android:id="@+id/cancel"
+        android:src="@drawable/ic_cancel"
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/edit_header"
+        app:layout_constraintBottom_toTopOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        android:background="@android:color/transparent"
+
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/editGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:constraint_referenced_ids="edit_header, edit_picture, edit_field, cancel" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="edit_picture, edit_header, cancel"
+        />
+
+
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:hint="@string/description_post_save"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description_post_save"
+        android:src="@drawable/ic_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="content, save" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
