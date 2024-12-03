@@ -7,9 +7,10 @@ import ru.netology.nmedia.dto.Post
 
 class PostRepositoryInMemoryImplementation : PostRepository {
 
+    private var nextId = 1L
     private var posts = listOf(
         Post(
-            id = 1,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла",
             published = "01.09.2024 14:00",
@@ -19,7 +20,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             viewsCounter = 1000
         ),
         Post(
-            id = 2,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла sssssss",
             published = "01.09.2024 15:00",
@@ -29,7 +30,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             viewsCounter = 777
         ),
         Post(
-            id = 3,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла sssssss saiuvalviu fivaelfivb sfvsefv",
             published = "01.09.2024 15:00",
@@ -39,7 +40,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             viewsCounter = 888
         ),
         Post(
-            id = 4,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла sssssss saiuvalviu fivaelfivb sfvsefv",
             published = "01.09.2024 15:00",
@@ -49,7 +50,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             viewsCounter = 888
         ),
         Post(
-            id = 5,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла sssssss saiuvalviu fivaelfivb sfvsefv",
             published = "01.09.2024 15:00",
@@ -59,7 +60,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             viewsCounter = 888
         ),
         Post(
-            id = 6,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла sssssss saiuvalviu fivaelfivb sfvsefv",
             published = "01.09.2024 15:00",
@@ -69,7 +70,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             viewsCounter = 888
         ),
         Post(
-            id = 7,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла sssssss saiuvalviu fivaelfivb sfvsefv",
             published = "01.09.2024 15:00",
@@ -79,7 +80,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             viewsCounter = 888
         ),
         Post(
-            id = 8,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла sssssss saiuvalviu fivaelfivb sfvsefv",
             published = "01.09.2024 15:00",
@@ -89,7 +90,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             viewsCounter = 888
         ),
         Post(
-            id = 9,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла sssssss saiuvalviu fivaelfivb sfvsefv",
             published = "01.09.2024 15:00",
@@ -99,7 +100,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             viewsCounter = 888
         ),
         Post(
-            id = 10,
+            id = nextId++,
             author = "Нетология, университет интернет-профессий будущего",
             content = "Очень длинная строка бла бла бла sssssss saiuvalviu fivaelfivb sfvsefv",
             published = "01.09.2024 15:00",
@@ -134,6 +135,36 @@ class PostRepositoryInMemoryImplementation : PostRepository {
 
         data.value = posts
 
+    }
+
+    override fun removeById(id: Long) {
+        posts = posts.filter { it.id != id }
+        data.value = posts
+    }
+
+    override fun save(post: Post) {
+        if (post.id == 0L) {
+            posts = listOf(
+                post.copy(
+                    id = nextId++,
+                    author = "Me",
+                    published = "Now",
+                    shareCounter = 0,
+                    likesCounter = 0,
+                    likeByMe = false,
+                    viewsCounter = 0
+                )
+            ) + posts
+            data.value = posts
+        } else {
+            posts = posts.map {
+                if (it.id != post.id) it else it.copy(
+                    content = post.content
+                )
+            }
+
+        }
+        data.value = posts
     }
 
 
