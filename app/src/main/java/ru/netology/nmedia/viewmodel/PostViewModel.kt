@@ -2,7 +2,6 @@ package ru.netology.nmedia.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.netology.nmedia.R
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositoryInMemoryImplementation
@@ -31,6 +30,9 @@ class PostViewModel : ViewModel() {
            repository.save(it.copy(content = content))
         }
 
+        edited.value = empty
+    }
+    fun cancelEditing(){
         edited.value = empty
     }
     fun likeById(id: Long) = repository.likeById(id)

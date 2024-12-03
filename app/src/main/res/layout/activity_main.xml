@@ -87,7 +87,7 @@ android:src="@drawable/ic_edit_picture"
 
     <EditText
         android:id="@+id/content"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:hint="@string/description_post_save"
@@ -95,16 +95,20 @@ android:src="@drawable/ic_edit_picture"
         android:inputType="textMultiLine"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/save"
         tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/save"
         android:layout_width="wrap_content"
+        android:padding="8dp"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_save"
         android:src="@drawable/ic_save"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/content"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
