@@ -7,10 +7,18 @@ import androidx.recyclerview.widget.ListAdapter
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 
-typealias LikeCallback = (Post) -> Unit
-typealias ShareCallback = (Post) -> Unit
+//typealias LikeCallback = (Post) -> Unit
+//typealias ShareCallback = (Post) -> Unit
+//typealias RemoveCallback = (Post) -> Unit
 
-class PostsAdapter(private val likeCallback: LikeCallback, private  val shareCallback:ShareCallback) :
+
+interface onInterActionListener {
+    fun onLike(post: Post)
+    fun onShare(post: Post)
+    fun onRemove(post: Post)
+    fun onEdit(post: Post)
+}
+class PostsAdapter(private val onInterActionListener: onInterActionListener) :
     ListAdapter<Post, PostViewHolder>(PostDiffCallback) {
 
 
@@ -20,7 +28,7 @@ class PostsAdapter(private val likeCallback: LikeCallback, private  val shareCal
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ), likeCallback, shareCallback
+            ), onInterActionListener
         )
 
     }
