@@ -22,9 +22,8 @@ class PostViewHolder(private val binding: CardPostBinding, private val onInterAc
         shareCounter.text = getFormattedSharesNumber(post.shareCounter)
         likesCounter.text = getFormattedLikesNumber(post.likesCounter)
         viewsCounter.text = getFormattedViewsNumber(post.viewsCounter)
-        likes.setImageResource(
-            if (post.likeByMe) R.drawable.icons8__30 else R.drawable.favorite_24px
-        )
+        likes.isChecked = post.likeByMe
+        likes.text = post.likesCounter.toString()
 
         likes.setOnClickListener {
             onInterActionListener.onLike(post)
