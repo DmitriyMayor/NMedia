@@ -19,11 +19,10 @@ class PostViewHolder(private val binding: CardPostBinding, private val onInterAc
         tvPublished.text = post.published
         tvPostText.text = post.content
         share.isActivated
-        shareCounter.text = getFormattedSharesNumber(post.shareCounter)
-        likesCounter.text = getFormattedLikesNumber(post.likesCounter)
-        viewsCounter.text = getFormattedViewsNumber(post.viewsCounter)
         likes.isChecked = post.likeByMe
-        likes.text = post.likesCounter.toString()
+        likes.text = getFormattedLikesNumber(post.likesCounter)
+        share.text = getFormattedSharesNumber(post.shareCounter)
+        views.text = getFormattedViewsNumber(post.viewsCounter)
 
         likes.setOnClickListener {
             onInterActionListener.onLike(post)

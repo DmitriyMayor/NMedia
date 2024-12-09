@@ -79,14 +79,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="likes, likesCounter, share, shareCounter, views, viewsCounter"
+        app:constraint_referenced_ids="likes, share, views"
         app:layout_constraintTop_toBottomOf="@id/tvPostText" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/likes"
         style="@style/Widget.App.LikedButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@color/white"
         android:checkable="true"
@@ -95,69 +95,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottomBarrier" />
 
-    <TextView
-        android:id="@+id/likesCounter"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:paddingTop="4dp"
-        android:text="100"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/likes"
-        app:layout_constraintStart_toEndOf="@+id/likes"
-        app:layout_constraintTop_toBottomOf="@id/bottomBarrier"
-        app:layout_constraintTop_toTopOf="@+id/likes" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/share"
         style="@style/Widget.App.ShareButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:layout_marginStart="24dp"
         android:paddingTop="4dp"
         app:icon="@android:drawable/ic_menu_share"
-
-        app:layout_constraintBottom_toBottomOf="@+id/likesCounter"
-        app:layout_constraintStart_toEndOf="@+id/likesCounter"
+        app:layout_constraintBottom_toBottomOf="@+id/likes"
+        app:layout_constraintStart_toEndOf="@+id/likes"
         app:layout_constraintTop_toBottomOf="@id/bottomBarrier"
-        app:layout_constraintTop_toTopOf="@+id/likesCounter"
+        app:layout_constraintTop_toTopOf="@+id/likes"
         app:srcCompat="@android:drawable/ic_menu_share" />
 
-    <TextView
-        android:id="@+id/shareCounter"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
 
-        android:paddingTop="4dp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/share"
-        app:layout_constraintStart_toEndOf="@+id/share"
-        app:layout_constraintTop_toBottomOf="@id/bottomBarrier"
-        app:layout_constraintTop_toTopOf="@+id/share" />
-
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/views"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:paddingTop="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/shareCounter"
-        app:layout_constraintEnd_toStartOf="@id/viewsCounter"
-        app:layout_constraintTop_toBottomOf="@id/bottomBarrier"
-        app:srcCompat="@drawable/visibility_24px" />
-
-    <TextView
-        android:id="@+id/viewsCounter"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginTop="4dp"
-        android:paddingTop="4dp"
-        android:text="100000"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/views"
+        app:icon="@drawable/visibility_24px"
+        app:layout_constraintBottom_toBottomOf="@+id/share"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottomBarrier"
-        app:layout_constraintTop_toTopOf="@+id/views" />
+        app:srcCompat="@drawable/visibility_24px" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
